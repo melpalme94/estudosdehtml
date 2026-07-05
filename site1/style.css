@@ -1,16 +1,16 @@
 @charset "UTF-8";
 
-*{
-    margin:0;
-    padding:0; 
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-:root{
+:root {
     --cor-fundo: #0d0d0d;
     --cor-texto: #f2f2f2;
     --cor-destaque: #1db954;
-    --cor-card:#1a1a1a;
+    --cor-card: #1a1a1a;
     --fonte-principal: 'Segoe UI', Arial, sans-serif;
     --espacamento: 1rem;
 
@@ -23,8 +23,17 @@ body {
     line-height: 1.5;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: 600;
+}
+main {
+    padding-top: 2rem;
+}
+
+main h2 {
+    margin-top: 2rem;
 }
 
 header {
@@ -33,11 +42,17 @@ header {
     align-items: center;
     padding: var(--espacamento) 2rem;
     background-color: var(--cor-card);
+    position: relative;
+    min-height: 100px;
+    /* altura mínima para o header */
+
 }
 
-header h1 {
-    font-size: 1.5rem; 
-    color: var(--cor-destaque);
+img.logo {
+    height: 80px;
+    width: auto;
+    border-radius: 50%;
+    border: 2px solid var(--cor-destaque);
 }
 
 nav {
@@ -57,9 +72,21 @@ nav a:hover {
     color: var(--cor-destaque);
 }
 
+.card.ativo {
+    border-color: var(--cor-destaque);
+    background-color: #223322;
+}
+
+#start-button.tocando {
+    background-color: var(--cor-destaque);
+    color: #000;
+}
+
 #menu-toggle {
-    display: none; /* escondido em telas grandes por enquanto */
+    display: none;
+    /* escondido em telas grandes por enquanto */
     background: none;
+    margin-left: auto;
     border: none;
     color: var(--cor-texto);
     font-size: 1rem;
@@ -102,4 +129,67 @@ nav a:hover {
 .card span {
     font-size: 0.85rem;
     color: var(--cor-destaque);
+}
+
+/* Tablet: até 1024px */
+
+@media (max-width: 1024px) {
+    .playlist {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        padding: 1.5rem
+    }
+}
+
+/* Mobile: até 600px */
+@media (max-width: 600px) {
+    header {
+        min-height: 70px;
+        /* acompanha a logo de 50px + margem */
+    }
+
+    img.logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 50px;
+    }
+
+    nav {
+        display: none;
+        /* esconde o menu de navegação */
+        flex-direction: column-reverse;
+        position: absolute;
+        top: 60px;
+        /* ajuste conforme a altura do header */
+        right: 100px;
+        background-color: var(--cor-card);
+        width: 100%;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    nav.aberto {
+        display: flex;
+        /* mostra o menu quando aberto */
+    }
+
+    #menu-toggle {
+        display: block;
+        /* mostra o botão de menu no mobile */
+    }
+
+    .playlist {
+        grid-template-columns: 1fr;
+        /* uma coluna no mobile */
+        padding: 1rem;
+    }
+
+    main h2 {
+        font-size: 1.4rem;
+    }
+
+    main p {
+        font-size: 0.9rem;
+    }
 }
