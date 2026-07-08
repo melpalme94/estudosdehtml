@@ -28,3 +28,39 @@ startButton.addEventListener('click', () => {
         startButton.classList.remove('tocando');
     }
 });
+
+// Menu mobile
+
+const menuToggle = document.getElementById('menu-toggle');
+const nav = document.querySelector('nav');
+
+menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('aberto');
+});
+
+const navLinks = document.querySelectorAll('nav a');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('aberto');
+    });
+});
+
+// Remover faixa e atualizar contador
+
+const contador = document.getElementById('contador');
+const botoesRemover = document.querySelectorAll('.remover');
+
+function atualizarContador() {
+    const totalFaixas = document.querySelectorAll('.card').length;
+    contador.textContent = `${totalFaixas} faixas na fila`;
+}
+
+botoesRemover.forEach(botao => {
+    botao.addEventListener('click', (evento) => {
+        evento.stopPropagation(); // Evita que o evento de clique no card seja acionado
+        const card = botao.closest('.card');
+        card.remove();
+        atualizarContador();
+    });
+});
