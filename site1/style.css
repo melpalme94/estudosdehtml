@@ -15,8 +15,14 @@
     --espacamento: 1rem;
 
 }
+html, body {
+    height: 100%;
+}
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
     font-family: var(--fonte-principal);
@@ -30,6 +36,7 @@ h3 {
 }
 
 main {
+    flex: 1;
     padding-top: 2rem;
 }
 
@@ -67,7 +74,10 @@ header {
     position: relative;
     min-height: 100px;
     /* altura mínima para o header */
+}
 
+main {
+    padding: 1.5rem;
 }
 
 img.logo {
@@ -180,6 +190,7 @@ nav a:hover {
 }
 
 footer {
+
     background-color: var(--cor-card);
     padding: 1.5rem 2rem;
     text-align: center;
