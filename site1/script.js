@@ -36,6 +36,8 @@ const nav = document.querySelector('nav');
 
 menuToggle.addEventListener('click', () => {
     nav.classList.toggle('aberto');
+    const expandido = nav.classList.contains('aberto');
+    menuToggle.setAttribute('aria-expanded', expandido);
 });
 
 const navLinks = document.querySelectorAll('nav a');
@@ -64,3 +66,6 @@ botoesRemover.forEach(botao => {
         atualizarContador();
     });
 });
+
+document.querySelector('footer p').textContent =
+    `© ${new Date().getFullYear()} Player Musical Interativo. Todos os direitos reservados.`;
